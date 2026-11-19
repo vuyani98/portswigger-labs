@@ -1,9 +1,9 @@
 # Lab: SameSite Lax bypass via method override
 
-- **Topic:** <e.g. SQL injection>
-- **Level:** Apprentice | Practitioner | Expert
-- **Solved:** YYYY-MM-DD
-- **Lab link:** <https://portswigger.net/web-security/...>
+- **CSRF**
+- **Level:** Practitioner 
+- **Solved:** 2026-11-19
+- **Lab link:** https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-lax-bypass-via-method-override
 
 ## Goal
 
